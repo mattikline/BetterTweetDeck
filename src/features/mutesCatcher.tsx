@@ -18,6 +18,11 @@ export enum AMEFilters {
   USER_REGEX = 'BTD_user_regex',
   MUTE_QUOTES = 'BTD_mute_quotes',
   USER_BIOGRAPHIES = 'BTD_user_biographies',
+  USER_BIOGRAPHIES_REGEX = 'BTD_user_biographies_regex',
+  USER_LOCATION = 'BTD_user_location',
+  USER_LOCATION_REGEX = 'BTD_user_location_regex',
+  USER_WEBSITE = 'BTD_user_website',
+  USER_WEBSITE_REGEX = 'BTD_user_website_regex',
   DEFAULT_AVATARS = 'BTD_default_avatars',
   FOLLOWER_COUNT_LESS_THAN = 'BTD_follower_count_less_than',
   FOLLOWER_COUNT_GREATER_THAN = 'BTD_follower_count_greater_than',
@@ -40,6 +45,11 @@ export const userSpecificTypes = [
   AMEFilters.NFT_AVATAR,
   AMEFilters.REGEX_DISPLAYNAME,
   AMEFilters.USER_BIOGRAPHIES,
+  AMEFilters.USER_BIOGRAPHIES_REGEX,
+  AMEFilters.USER_LOCATION,
+  AMEFilters.USER_LOCATION_REGEX,
+  AMEFilters.USER_WEBSITE,
+  AMEFilters.USER_WEBSITE_REGEX,
   AMEFilters.USER_REGEX,
 ];
 
@@ -223,6 +233,21 @@ export function formatMuteReason(muteCatch: MuteReason) {
     }
     case AMEFilters.USER_BIOGRAPHIES: {
       return `biography matched the phrase "${value}"`;
+    }
+    case AMEFilters.USER_BIOGRAPHIES_REGEX: {
+      return `biography matched the regex \`/${value}/gi\` `;
+    }
+    case AMEFilters.USER_LOCATION: {
+      return `location matched the phrase "${value}"`;
+    }
+    case AMEFilters.USER_LOCATION_REGEX: {
+      return `location matched the regex \`/${value}/gi\` `;
+    }
+    case AMEFilters.USER_WEBSITE: {
+      return `website matched the phrase "${value}"`;
+    }
+    case AMEFilters.USER_WEBSITE_REGEX: {
+      return `website matched the regex \`/${value}/gi\` `;
     }
     case AMEFilters.USER_REGEX: {
       return `username matched the regex \`/${value}/gi\` `;

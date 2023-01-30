@@ -236,6 +236,74 @@ export const setupAME = makeBTDModule(({TD, jq}) => {
         return !e.user.description.toLowerCase().includes(t.value);
       },
     },
+    [AMEFilters.USER_BIOGRAPHIES_REGEX]: {
+      display: {
+        global: true,
+      },
+      name: 'Biography (Regular Expression)',
+      descriptor: 'bios matching',
+      placeholder: 'Enter a regular expression',
+      function(t, e) {
+        if (!e.user) return true;
+        const regex = new RegExp(t.value, 'gi');
+
+        return !e.user.description.match(regex);
+      },
+    },
+    [AMEFilters.USER_LOCATION]: {
+      display: {
+        global: true,
+      },
+      name: 'Location',
+      descriptor: 'users whose location contains',
+      placeholder: 'Enter a keyword or phrase',
+      function(t, e) {
+        if (!e.user) return true;
+
+        return !e.user.location.toLowerCase().includes(t.value);
+      },
+    },
+    [AMEFilters.USER_LOCATION_REGEX]: {
+      display: {
+        global: true,
+      },
+      name: 'Location (Regular Expression)',
+      descriptor: 'locations matching',
+      placeholder: 'Enter a regular expression',
+      function(t, e) {
+        if (!e.user) return true;
+        const regex = new RegExp(t.value, 'gi');
+
+        return !e.user.location.match(regex);
+      },
+    },
+    [AMEFilters.USER_WEBSITE]: {
+      display: {
+        global: true,
+      },
+      name: 'Website',
+      descriptor: 'users whose website contains',
+      placeholder: 'Enter a keyword or phrase',
+      function(t, e) {
+        if (!e.user) return true;
+
+        return !e.user.getExpandedURL().toLowerCase().includes(t.value);
+      },
+    },
+    [AMEFilters.USER_WEBSITE_REGEX]: {
+      display: {
+        global: true,
+      },
+      name: 'Website (Regular Expression)',
+      descriptor: 'websites matching',
+      placeholder: 'Enter a regular expression',
+      function(t, e) {
+        if (!e.user) return true;
+        const regex = new RegExp(t.value, 'gi');
+
+        return !e.user.getExpandedURL().match(regex);
+      },
+    },
     [AMEFilters.DEFAULT_AVATARS]: {
       display: {
         global: true,
